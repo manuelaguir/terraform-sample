@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-job
+spec:
+  backoffLimit: 3
+  template:
+    metadata:
+      name: example-job-pod
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: example-container
+          image: busybox
+          command: ["sh", "-c", "echo Starting job; sleep 5; echo Job complete"]
